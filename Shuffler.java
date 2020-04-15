@@ -51,6 +51,25 @@ public class Shuffler {
 	 */
 	public static void perfectShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int[] shuffled = new int[values.length];
+		
+		int k = 0; //even
+		for (int j = 0; j <= values.length / 2 ; j++) {
+			shuffled[k] = values[j];
+			k += 2;
+		}
+		
+		k = 1; //odd
+		for (int j = (values.length)/2; j < values.length; j++) {
+			shuffled[k] = values[j];
+			k += 2;
+		}
+		
+		//replaces completely with shuffled cards
+		for (int i = 0; i < shuffled.length; i++) {
+			values[i] = shuffled[i];	
+		}
+		
 	}
 
 	/**
@@ -66,5 +85,42 @@ public class Shuffler {
 	 */
 	public static void selectionShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		
+		for(int k = values.length - 1; k > 0; k--) {
+			int position = (int) Math.random() * (k + 1); //picks position at random
+			int shuffled = values[position];
+			values[position] = values[k]; //replaces
+			values[k] = shuffled;
+		}
+		
+		
 	}
+	
+	public static String flip() {
+		double n = Math.random();
+		double percent = 2.0 / 3.0;
+		if (n <= percent) {
+			return "heads";
+		} else {
+			return "tails";
+		}
+	}
+	
+	public static boolean arePermutations(int[] a, int[] b) {
+		int count = 0;
+		for (int i = 0; i < a.length; i++) {
+			for (int j = 0; j < b.length; j++) {
+				if (a[i] == b[j]) {
+					count++;
+				}
+			}
+		}
+		if(count == a.length) {
+			return true;
+		} else {
+			return false;
+		}	
+	}
+	
+	
 }
