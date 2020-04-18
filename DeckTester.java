@@ -52,5 +52,55 @@ public class DeckTester {
 		System.out.println();
 
 		/* *** TO BE COMPLETED IN ACTIVITY 4 *** */
+		
+		String[] newRanks = new String[52];
+		String rank = "";
+		String[] newSuits = new String[52];
+		String suit = "";
+		int[] newValues = new int[52];
+		
+		for (int i = 1; i <= newValues.length; i++) {
+			int temp;
+			if (i >= 14 && i <= 26) {
+				temp = i - 13;
+			} else if (i >= 27 && i <= 39) {
+				temp = i - 26;
+			} else if (i >= 40) {
+				temp = i - 39;
+			} else {
+				temp = i;
+			}
+			
+			if (temp == 1) {
+				rank = "Ace";
+			} else if (temp == 11) {
+				rank = "Jack";
+			} else if (temp == 12) {
+				rank = "Queen";
+			} else if (temp == 13) {
+				rank = "King";
+			} else {
+				rank = "" + temp;
+			}
+			
+			
+			if (i <= 13) {
+				suit = "Diamonds";
+			} else if (i > 13 && i <= 26) {
+				suit = "Clubs";
+			} else if (i > 26 && i <= 39) {
+				suit = "Spades";
+			} else {
+				suit = "Hearts";
+			}
+			
+			newRanks[i - 1] = rank;
+			newSuits[i - 1] = suit;
+			newValues[i - 1]= temp;
+		}
+		
+		Deck newDeck = new Deck (newRanks, newSuits, newValues);
+		//System.out.println(newDeck);
+		
 	}
 }
